@@ -1,0 +1,13 @@
+nav{
+    background-color: transparent;
+    width:100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 0px;
+}
+nav a{
+    color: black;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}

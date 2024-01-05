@@ -1,0 +1,46 @@
+header{
+    background: url("../../images/iool.jpg");
+    background-size: cover;
+    width: 100%;
+    max-width: 100%;
+    text-align: left;
+    height: auto;
+    overflow: hidden;
+    padding: 300px 0px;
+    margin-top: 0px;
+    border-bottom: 1px solid white;
+
+}
+header.row{
+    margin: 300px 0px;
+}
+header h2{
+    color:rgba(76, 66, 66, 0.937);
+    font-size: 40px;
+    line-height: 50px;
+    width: 80%;
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+header button{
+    width: 196px;
+    height: 60px;
+    border-radius: 28px;
+    background-color: #198754;
+    text-align: center;
+    color: white;
+    margin:20px 10px 20px 55px;}
+header button:hover{
+    transition: .2s ease-in-out;
+}
+header button:first-of-type:hover{
+    background-color: white;
+    color:black;
+}
+header button:last-of-type:hover{
+    background-color: white;
+    color:black;
+}
+.bttn{
+    margin: 10px;
+}

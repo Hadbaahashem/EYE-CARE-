@@ -1,0 +1,749 @@
+import React from 'react'
+import CategoryCard from './CategoryCard'
+import R1 from '../../images/R1.png'
+import R2 from '../../images/R2.png'
+import R3 from '../../images/R3.png'
+import R4 from '../../images/R4.png'
+import { Row, Container } from 'react-bootstrap';
+import './Gallery.css'
+
+const Gallery = () => {
+  return (
+    <Container >
+    
+    <Row className='my-2 d-flex justify-content-between'>
+        <CategoryCard title="Eye1" img={R1} />
+        <CategoryCard title="Eye2" img={R2} />
+        <CategoryCard title="Eye3" img={R3}  />
+        <CategoryCard title="Eye4" img={R4}  />
+
+    </Row>
+  
+</Container> 
+ )
+}
+
+export default Gallery
+
+
+
+
+
+
+
+
+ const GalleryCard = (props) => {
+      return (
+        <div>
+        <Cards/>
+
+        <Col xs="6" sm="6" md="4" lg="3" className="d-flex">
+           <Card style={{ width: '18rem' }} className="box">
+          <Card.Img variant="top" src={props.img} />
+          <Card.Body>
+            <Card.Title>{props.title}</Card.Title>
+            <Card.Text>
+              {props.description}
+            </Card.Text>
+          </Card.Body>
+       
+        </Card>
+        </Col>
+        </div>
+
+      )
+    }
+
+
+
+
+
+const Cards = () => {
+    const data =[
+        {title:'Eye1',description:'Eye', img: R1},
+        {title:'Eye2',description:'Eye', img: R2},
+        {title:'Eye3',description:'description 3', img: R3},
+        {title:'Eeye4',description:'description 4', img: R4}
+      ]
+  return (
+    <div>
+    {
+        data.length ? ( data.map((item,index)=>{
+        return (
+         <GalleryCard key={index } title={item.title} description={item.description} img={item.img}/>
+        )
+        })) :[]
+       } 
+    </div>
+  )
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <div>
+        <a href="/">
+        <i className="fa-brands fa-facbook-square"/>
+        </a>
+        <a href="/">
+        <i className="fa-brands fa-instagram-square"/>
+        </a> 
+        <a href="/">
+        <i className="fa-brands fa-behance-square"/>
+        </a>
+         <a href="/">
+        <i className="fa-brands fa-twitter-square"/>
+        </a>
+        </div>
+
+
+
+
+
+                <Route path="/gallery" element={ <GalleryCard/>}/>
+
+
+
+
+
+
+
+
+background: url("../../images/eye.jpg");
+    background-size: cover;
+    width: 100%;
+    max-width: 100%;
+    text-align: left;
+    height: auto;
+    overflow: hidden;
+    padding: 300px 0px;
+    margin-top: 0px;
+    border-bottom: 1px solid white;
+
+
+      display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 750px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), url("../../images/eye.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const Login = () => {
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+  const [errors, setErrors] = useState({});
+  const [valid, setValid] = useState(true);
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let isValid = true;
+    let validationErrors = {};
+
+    if (formData.email === "" || formData.email === null) {
+      isValid = false;
+      validationErrors.email = "Email required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      isValid = false;
+      validationErrors.email = "Email is not valid";
+    }
+
+    if (formData.password === "" || formData.password === null) {
+      isValid = false;
+      validationErrors.password = "Password required";
+    } else if (formData.password.length < 6) {
+      isValid = false;
+      validationErrors.password = "Password length should be at least 6 characters";
+    }
+
+    setErrors(validationErrors);
+    setValid(isValid);
+
+    if (!isValid) {
+      // Display validation errors using toast
+      Object.values(validationErrors).forEach((error) => {
+        toast.error(error);
+      });
+      return;
+    }
+
+    axios.get('http://localhost:8000/users')
+      .then(result => {
+        result.data.forEach(user => {
+          if (user.email === formData.email) {
+            if (user.password === formData.password) {
+              toast.success("Login successful");
+              navigate('/');
+            } else {
+              isValid = false;
+              validationErrors.password = "Wrong Password";
+            }
+          }
+        });
+        setErrors(validationErrors);
+        setValid(isValid);
+
+        if (!isValid) {
+          // Display validation errors using toast
+          Object.values(validationErrors).forEach((error) => {
+            toast.error(error);
+          });
+        }
+      })
+      .catch(err => console.log(err));
+  };
+
+  return (
+    // ... (your existing JSX code)
+  );
+};
+
+export default Login;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// DoctorView.js
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import './DoctorView.css'; // Import your CSS file
+
+const DoctorView = () => {
+  const [doctors, setDoctors] = useState([]);
+  const [name, setName] = useState('');
+  const [specialization, setSpecialization] = useState('');
+
+  useEffect(() => {
+    // Fetch doctors from JSON Server
+    axios.get('http://localhost:8000/patients')
+      .then(response => setDoctors(response.data))
+      .catch(error => console.error('Error fetching doctors:', error));
+  }, []);
+
+  const handleAddDoctor = () => {
+    // Send a POST request to add a new doctor
+    axios.post('http://localhost:8000/patients', { name, specialization })
+      .then(response => {
+        setDoctors([...doctors, response.data]);
+        setName('');
+        setSpecialization('');
+      })
+      .catch(error => console.error('Error adding doctor:', error));
+  };
+
+  const handleDeleteDoctor = (id) => {
+    // Send a DELETE request to remove a doctor
+    axios.delete(`http://localhost:8000/patients/${id}`)
+      .then(() => {
+        setDoctors(doctors.filter(doctor => doctor.id !== id));
+      })
+      .catch(error => console.error('Error deleting doctor:', error));
+  };
+
+  return (
+    <div className="doctor-view-container">
+      <h1>Doctor View</h1>
+      <ul className="doctor-list">
+        {doctors.map(doctor => (
+          <li key={doctor.id} className="doctor-item">
+            <div>
+              <strong>{doctor.name}</strong>
+              <p>{doctor.specialization}</p>
+            </div>
+            <button className="delete-button" onClick={() => handleDeleteDoctor(doctor.id)}>Delete</button>
+          </li>
+        ))}
+      </ul>
+      <div className="add-doctor-form">
+        <h2>Add Doctor</h2>
+        <label>Name:</label>
+        <input type="text" value={name} onChange={e => setName(e.target.value)} />
+        <label>Specialization:</label>
+        <input type="text" value={specialization} onChange={e => setSpecialization(e.target.value)} />
+        <button className="add-doctor-button" onClick={handleAddDoctor}>Add Doctor</button>
+      </div>
+    </div>
+  );
+};
+
+export default DoctorView;
+
+
+
+
+
+
+
+
+
+
+
+
+// DoctorView.js
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Modal, Button, Form } from 'react-bootstrap';
+import './DoctorView.css';
+
+const DoctorView = () => {
+  const [doctors, setDoctors] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [name, setName] = useState('');
+  const [specialization, setSpecialization] = useState('');
+
+  useEffect(() => {
+    // Fetch doctors from JSON Server
+    axios.get('http://localhost:8000/patients')
+      .then(response => setDoctors(response.data))
+      .catch(error => console.error('Error fetching doctors:', error));
+  }, []);
+
+  const handleAddDoctor = () => {
+    // Send a POST request to add a new doctor
+    axios.post('http://localhost:8000/patients', { name, specialization })
+      .then(response => {
+        setDoctors([...doctors, response.data]);
+        handleCloseModal();
+      })
+      .catch(error => console.error('Error adding doctor:', error));
+  };
+
+  const handleDeleteDoctor = (id) => {
+    // Send a DELETE request to remove a doctor
+    axios.delete(`http://localhost:8000/patients/${id}`)
+      .then(() => {
+        setDoctors(doctors.filter(doctor => doctor.id !== id));
+      })
+      .catch(error => console.error('Error deleting doctor:', error));
+  };
+
+  const handleShowModal = () => setShowModal(true);
+  const handleCloseModal = () => setShowModal(false);
+
+  return (
+    <div className="doctor-view-container">
+      <h1>Doctor View</h1>
+      <ul className="doctor-list">
+        {doctors.map(doctor => (
+          <li key={doctor.id} className="doctor-item">
+            <div>
+              <strong>{doctor.name}</strong>
+              <p>{doctor.specialization}</p>
+            </div>
+            <button className="delete-button" onClick={() => handleDeleteDoctor(doctor.id)}>Delete</button>
+          </li>
+        ))}
+      </ul>
+      <Button variant="primary" onClick={handleShowModal}>
+        Add Doctor
+      </Button>
+      <Modal show={showModal} onHide={handleCloseModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add Doctor</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group controlId="formName">
+              <Form.Label>Name</Form.Label>
+              <Form.Control type="text" placeholder="Enter name" value={name} onChange={(e) => setName(e.target.value)} />
+            </Form.Group>
+            <Form.Group controlId="formSpecialization">
+              <Form.Label>Specialization</Form.Label>
+              <Form.Control type="text" placeholder="Enter specialization" value={specialization} onChange={(e) => setSpecialization(e.target.value)} />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseModal}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleAddDoctor}>
+            Add Doctor
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </div>
+  );
+};
+
+export default DoctorView;
+
+
+
+
+
+
+
+
+
+// DoctorView.js
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Modal, Button, Form, Card, Row, Col } from 'react-bootstrap';
+import './DoctorView.css';
+
+const DoctorView = () => {
+  const [patients, setPatients] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [name, setName] = useState('');
+  const [specialization, setSpecialization] = useState('');
+  const [selectedPatient, setSelectedPatient] = useState(null);
+
+  useEffect(() => {
+    // Fetch patients from JSON Server
+    axios.get('http://localhost:8000/patients')
+      .then(response => setPatients(response.data))
+      .catch(error => console.error('Error fetching patients:', error));
+  }, []);
+
+  const handleAddPatient = () => {
+    // Send a POST request to add a new patient
+    axios.post('http://localhost:8000/patients', { name, specialization })
+      .then(response => {
+        setPatients([...patients, response.data]);
+        handleCloseModal();
+      })
+      .catch(error => console.error('Error adding patient:', error));
+  };
+
+  const handleUpdatePatient = () => {
+    // Send a PUT request to update the selected patient
+    axios.put(`http://localhost:8000/patients/${selectedPatient.id}`, { name, specialization })
+      .then(response => {
+        setPatients(patients.map(patient => (patient.id === selectedPatient.id ? response.data : patient)));
+        handleCloseModal();
+      })
+      .catch(error => console.error('Error updating patient:', error));
+  };
+
+  const handleDeletePatient = (id) => {
+    // Send a DELETE request to remove a patient
+    axios.delete(`http://localhost:8000/patients/${id}`)
+      .then(() => {
+        setPatients(patients.filter(patient => patient.id !== id));
+      })
+      .catch(error => console.error('Error deleting patient:', error));
+  };
+
+  const handleShowModal = (patient) => {
+    setSelectedPatient(patient);
+    setShowModal(true);
+    setName(patient ? patient.name : '');
+    setSpecialization(patient ? patient.specialization : '');
+  };
+
+  const handleCloseModal = () => {
+    setSelectedPatient(null);
+    setShowModal(false);
+    setName('');
+    setSpecialization('');
+  };
+
+  return (
+    <div className="doctor-view-container">
+      <Button variant="primary" onClick={() => handleShowModal(null)}>
+        Add Patient
+      </Button>
+      <Row xs={1} md={2} lg={3} className="g-4 mt-3">
+        {patients.map(patient => (
+          <Col key={patient.id}>
+            <Card>
+              <Card.Body>
+                <Card.Title>{patient.name}</Card.Title>
+                <Card.Text>{patient.specialization}</Card.Text>
+                <Button variant="info" onClick={() => handleShowModal(patient)}>Update</Button>
+                <Button variant="danger" onClick={() => handleDeletePatient(patient.id)}>Delete</Button>
+              </Card.Body>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+      <Modal show={showModal} onHide={handleCloseModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>{selectedPatient ? 'Update Patient' : 'Add Patient'}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group controlId="formName">
+              <Form.Label>Name</Form.Label>
+              <Form.Control type="text" placeholder="Enter name" value={name} onChange={(e) => setName(e.target.value)} />
+            </Form.Group>
+            <Form.Group controlId="formSpecialization">
+              <Form.Label>Specialization</Form.Label>
+              <Form.Control type="text" placeholder="Enter specialization" value={specialization} onChange={(e) => setSpecialization(e.target.value)} />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseModal}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={selectedPatient ? handleUpdatePatient : handleAddPatient}>
+            {selectedPatient ? 'Update Patient' : 'Add Patient'}
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </div>
+  );
+};
+
+export default DoctorView;
+
+
+
+
+
+
+
+
+
+
+
+/* DoctorView.css */
+.doctor-view-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+.mt-3 {
+  margin-top: 1rem !important;
+}
+
+.g-4 > [class*='col-'] {
+  margin-bottom: 1rem;
+}
+
+.card {
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.add-patient-button {
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.update-button {
+  background-color: #2196f3;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.delete-button {
+  background-color: #ff6262;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+/* Modal styles */
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.modal-body form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+import axios from 'axios'
+import React from 'react'
+import { useState } from 'react'
+import { useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import NavBar from '../Nav/NavBar'
+import'./DoctorView.css'
+import { toast } from 'react-toastify'
+const DoctorView = () => {
+    const [data, setData] = useState([])
+    const [query, setQuery] = useState("");
+  
+    const navigate = useNavigate()
+    useEffect(() => {
+        loadPatients();
+      }, []);
+
+      useEffect(() => {
+        const fetchData = async () => {
+          const res = await axios.get(`http://localhost:8000/patients?q=${query}`);
+          setData(res.data);
+        };
+        if (query.length === 0 || query.length > 1) fetchData();
+      }, [query]);
+    
+      const loadPatients= async () => {
+        const result = await axios.get("http://localhost:8000/patients");
+        setData(result.data.reverse());
+      };
+      const deletePatient = (id) => {
+        if (window.confirm('Do you want to remove?')) {
+            fetch("http://localhost:8000/patients/" + id, {
+                method: "DELETE"
+            }).then((res) => {
+                toast.success('Removed successfully.')
+                window.location.reload();
+            }).catch((err) => {
+                console.log(err.message)
+            })
+        }
+    }
+    useEffect(()=> {
+        axios.get('http://localhost:8000/patients')
+        .then(res => setData(res.data))
+        .catch(err => console.log(err))
+    }, [])
+   
+  return (
+    <div>
+    <NavBar/>
+    <div className='container '>
+    <h2>Patients</h2>
+    <Link to="/create" className='btn btn-success my-3'>Add Patient +</Link>
+    <div className="box">
+    <input
+      className="search "
+      placeholder="Search..."
+      onChange={(e) => setQuery(e.target.value.toLowerCase())}
+    />
+    </div>
+
+    <table className='table'>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Result</th>
+                 <th>Email</th>
+                <th>Action</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {data.map((d, i)=> (
+                <tr>
+                <th scope="row">{i + 1}</th>         
+                    <td>{d.name}</td>
+                    <td>{d.result}</td>
+                     <td>{d.email}</td>
+                    <td>
+                        <Link className='text-decoration-none btn btn-sm btn-success' to={`/update/${d.id}`}>Update</Link>
+                         </td>
+                        <td>
+                        <button className="btn btn-danger" onClick={() => deletePatient(d.id)}>Delete</button>
+                        </td>
+                        <td>
+                        <Link className='text-decoration-none btn btn-sm btn-primary' to={`/read/${d.id}`}>Read</Link>
+                        </td>
+                </tr>
+            ))}
+        </tbody>
+    </table>
+
+</div>  
+</div>
+)
+
+}
+
+export default DoctorView

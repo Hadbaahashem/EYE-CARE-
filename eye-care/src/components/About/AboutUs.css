@@ -1,0 +1,41 @@
+.about-container{
+    margin: 3rem 3rem;
+    text-align: start;
+}
+.subheader  {
+    margin-bottom: 0.9rem;
+    letter-spacing: 2px;
+    font-weight: 600;
+    padding-left: 12px;
+    color: black;
+  }
+.subheader::after {
+    position: absolute;
+    content: "";
+    top:22%;
+    transform: translate(1rem, -50%);
+    height: 2px;
+    width: 4rem;
+    background-color: rgb(114, 82, 218);
+  }
+  .org {
+    max-width: 600px;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 3rem;
+    color: black;
+  }
+.description {
+    padding-bottom: 2rem;
+    font-size: 16px;
+    color: rgb(101, 93, 93);
+}
+@media screen and (max-width:850px) {
+    .about-container{
+        margin: 4rem 6rem;
+    }
+}
+.img{
+    margin: 4rem 2rem;
+}

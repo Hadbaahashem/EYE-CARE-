@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+.color-body {
+  background-color: rgba(160, 166, 209, 0.345);
+  height: 100vh;
+}
+*{
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+.font {
+  font-family: 'Poppins', sans-serif;}
+.title{
+  color: rgba(0, 0, 0, 0.779);
+  font-family: Almari;
+  font-size: 50px;
+  letter-spacing: 0;
+  line-height: 64px;
+  margin-left: 150px;
+  margin-top: 150px;
+}
+.bg{
+  width: 200px;
+  height: 200px;
+  background-size:cover ;
+}
+
+.btn{
+  padding: .4rem 1.5rem;
+  background-color: rgb(26, 118, 78);
+  border: none;
+  outline: none;
+  border-radius: 5rem;
+  cursor: pointer;
+  
+}
+.btn a{
+  color: white;
+  font-weight: 500;
+}
+.btn:hover a{
+  color: blue;
+}
+.section {
+  padding: 4rem 0 2rem;
+}
+.icon{
+  font-size: 2rem;
+  cursor: pointer;
+}
+.flex{
+  display: flex;
+  align-items: center;
+}
+.grid{
+  display: flex;
+  align-items: center;
+}
+.secIntro{
+  max-width: 70%;
+  text-align: center;
+  margin: 0 auto 2rem;
+}
+.secIntro.secTiltle{
+  color: red;
+  line-height: 1.5rem;
+  padding-bottom: .5rem;
+}
+.secIntro p{
+  font-size: 13px;
+  color: violet;
+  font-weight: 500;
+}
+img,video {
+  width: 100%;
+  height: auto;
+}
+input{
+  font-size: 100%;
+}
+.hero{
+  height: 80vh;
+  background: url(./images/eye.jpg)no-repeat center center fixed;
+  background-size: cover;
+}
+
+
+

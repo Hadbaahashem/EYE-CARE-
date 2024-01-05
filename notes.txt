@@ -1,0 +1,271 @@
+import React from 'react'
+import { Button, Card } from 'react-bootstrap'
+
+const DoctorCard = (props) => {
+  return (
+    <Card style={{ width: '18rem' }} className="box">
+      <Card.Img variant="top" src={props.img} />
+      <Card.Body>
+        <Card.Title>{props.title}</Card.Title>
+        <Card.Text>
+          {props.description}
+        </Card.Text>
+      </Card.Body>
+    </Card>
+  )
+}
+
+export default DoctorCard
+
+
+
+
+
+import dr1 from './images/dr1.jpg'
+import dr2 from './images/dr2.jpg'
+import dr3 from './images/dr3.jpg'
+import dr4 from './images/dr4.jpg'
+
+function App() {
+  const data =[
+    {title:'Dr. Anna Winds',description:'Phd Holder with specialist on Ratina', img: dr1},
+    {title:'Dr. Nick Leng',description:'Phd Holder with specialist on Eye Therapy', img: dr2},
+    {title:'Dr. Harsy Backley',description:'description 3', img: dr3},
+    {title:'Dr. Elizabeth Blackwell',description:'description 4', img: dr4}
+  ]
+  return (
+    <div className="color-body font">
+    <NavBar/>
+    <Home/>
+    <AboutUs/>
+    <DoctorCard/>
+    <Container>
+    </Container>
+    {
+      data.length ? ( data.map((item,index)=>{
+      return (
+       <DoctorCard key={index } title={item.title} description={item.description} img={item.img}/>
+      )
+      })) :[]
+     }  
+    </div>
+  );
+}
+
+
+
+
+
+
+
+
+const DoctorCard = () => {
+  const cardInfo =[
+    {title:'Dr. Anna Winds',description:'Phd Holder with specialist on Ratina', image: "https://demos.codezeel.com/wordpress/WP01/WP003/wp-content/uploads/2022/06/team-4.jpg"},
+    {title:'Dr. Nick Leng',description:'Phd Holder with specialist on Eye Therapy', image:"https://demos.codezeel.com/wordpress/WP01/WP003/wp-content/uploads/2022/06/team-3.jpg" },
+    {title:'Dr. Harsy Backley',description:'description 3', image: "https://demos.codezeel.com/wordpress/WP01/WP003/wp-content/uploads/2022/06/team-2.jpg"},
+    {title:'Dr. Elizabeth Blackwell',description:'description 4', image: "https://demos.codezeel.com/wordpress/WP01/WP003/wp-content/uploads/2022/06/team-1.jpg"}
+  ];
+
+const renderCard=(card,index)=>{
+  return (
+    <Card style={{ width: '18rem' }} key={index} className="box">
+      <Card.Img variant="top" src={card.image} />
+      <Card.Body>
+        <Card.Title>{card.title}</Card.Title>
+        <Card.Text>
+         {card.description}
+        </Card.Text>
+      </Card.Body>
+    </Card>
+  )
+}
+return <div className="App">
+ {cardInfo.map(renderCard)}</div>
+}
+
+export default DoctorCard
+
+export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+contact
+
+.form-container h1{
+text-align: center;
+}
+.form-container{
+    margin: 4rem 6rem;
+    color: #2a2a2a;
+}
+.form-container form{
+padding-top: 3rem;
+display: flex;
+flex-direction: column;
+width: 50%;
+margin: auto;
+}
+.form-container input{
+    height: 3rem;
+    padding: 0 1rem;
+    margin-bottom: 2rem;
+    border-radius: 0.3rem;
+    border: 1px solid #2a2a2a;
+}
+.form-container textarea{
+    padding: 0 1rem;
+    margin-bottom: 2rem;
+    border-radius: 0.3rem;
+    border: 1px solid #2a2a2a;
+}
+
+.form-container button{
+    display: inline;
+    width: 200px;
+    margin-left: 210px;
+}
+@media screen and (max-width:850px) {
+    .form-container{
+        margin: 4rem 2rem;
+        color: #2a2a2a;
+    }
+    .form-container form {
+        padding-top:2rem ;
+        width: 90%;
+    }
+}
+
+
+
+
+
+
+
+js
+
+const ContactForm = () => {
+  return (
+    <div className="form-container">
+     <h1> Contact Us</h1>
+     <form>
+       <input placeholder="Name"/>
+       <input placeholder="Email"/>
+       <input placeholder="Mobile Number"/>
+       <textarea placeholder="Message" rows="4"></textarea>
+       <Button>Submit </Button>
+    </form>
+    <div className="info">
+      <h4>Get In Touch</h4>
+      <span className="phone">+00 123-456-789</span>
+      <span className="phone">+00 123-456-789</span>
+      <h4>Where We Are</h4>
+      <address>Address 17 <br/>New York,NYC<br/>123-4560-789<br/>USA</address>
+    </div>
+    </div>
+  )
+}
+
+export default ContactForm
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       <div className="color-body font">
+           </div>
+ 
+
+
+ <Container>
+    </Container>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div>
+    <div className=" Container" style={{ minHeight: "680px" }}>
+     <form onSubmit={Submit}>
+        <Row className="py-5 d-flex justify-content-center hieght-search">
+          <Col sm="12" className="d-flex flex-column ">
+            <label className="mx-auto title-login">Sign Up</label>
+            <input
+              placeholder="User Name"
+              type="text"
+              className="form-control user-input mt-3 text-center mx-auto"
+              value={name}
+              onChange={(e)=>SetName(e.target.value)}
+            />
+            <input placeholder="Enter Email" type="text"  
+            className="form-control user-input my-3 text-center mx-auto" required
+            value={email} 
+            onChange={(e)=>SetEmail(e.target.value)}
+            />
+            <input
+              placeholder=" Enter Password"
+              type="password"
+              className="form-control user-input text-center mx-auto"
+              value={password}
+              onChange={(e)=>SetPassword(e.target.value)}
+            />
+           { password.length< 8 && accept && <p className="mx-auto my-2">Password must be more than 8 Char</p>}
+            <button type="submit" className="btn-login mx-auto mt-4">CREATE ACCOUNT</button>
+            <label className="mx-auto my-4">
+            Have an account already?{" "}
+              <Link to="/login" style={{ textDecoration: "none" }}>
+                <span style={{ cursor: "pointer" }} className="text-danger">
+                Log in
+                 </span>
+              </Link>
+            </label>
+          </Col>
+        </Row>
+        </form>
+
+      </div>
+      </div>

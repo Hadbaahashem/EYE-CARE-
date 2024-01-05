@@ -1,0 +1,60 @@
+import React, { useState } from 'react'
+import { Container, Row, Col } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import "./Login.css"
+const Login = () => {
+    const[email,setEmail]=useState('')
+    const [password,setPassword]=useState('')
+  return (
+    <div>
+    <Container style={{ minHeight: "680px" }}>
+    <Row className="py-5 d-flex justify-content-center ">
+        <Col sm="12" className="d-flex flex-column ">
+            <label className="mx-auto title-login">Sign In</label>
+            <input placeholder="Enter Email"
+            type="text"
+            className="form-control user-input my-3 text-center mx-auto"
+            required
+          />
+            <input
+                placeholder="Enter Password"
+                type="password"
+                className="form-control user-input text-center mx-auto"
+            />
+            <button className="btn-login mx-auto mt-4">LOG IN</button>
+            <label className="mx-auto my-4">
+            Don't have an account? {" "}
+                <Link to="/signup" style={{textDecoration:'none'}}>
+                    <span style={{ cursor: "pointer" }} className="text-primary">
+                    Sign Up
+                                        </span>
+                </Link>
+            </label>
+
+
+
+        </Col>
+
+    </Row>
+</Container>
+</div>
+)
+}
+
+export default Login
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

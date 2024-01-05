@@ -1,0 +1,108 @@
+{
+  "users": [
+    {
+      "name": "salma",
+      "email": "salma@gmail.com",
+      "password": "123456",
+      "role": "user",
+      "id": 1
+    },
+    {
+      "name": "hyo",
+      "email": "hyo@hotmail.com",
+      "password": "123456789",
+      "id": 2
+    },
+    {
+      "name": "hadbaa",
+      "email": "hadbaahashem800@gmail.com",
+      "password": "123456789",
+      "role": "doctor",
+      "id": 3
+    },
+    {
+      "name": "Khaled Mansour",
+      "email": "khaled@gmail.com",
+      "password": "123456",
+      "id": 4
+    }
+  ],
+  "patients": [
+    {
+      "name": "Omniaa",
+      "result": "Moderate",
+      "email": "moni@gmail.com",
+      "id": 4
+    },
+    {
+      "name": "sohaa",
+      "email": "soha@gmail.com",
+      "result": "Severe",
+      "id": 5
+    },
+    {
+      "name": "layla",
+      "email": "layla@gmail.com",
+      "result": "Mild",
+      "id": 6
+    },
+    {
+      "name": "Mohamed",
+      "email": "Mohamed@gmail.com",
+      "result": "None",
+      "id": 8
+    },
+    {
+      "name": "Syaed islam",
+      "email": "sayed@gmail.com",
+      "result": "Mild",
+      "id": 9
+    },
+    {
+      "name": "khaled",
+      "email": "khaled@gmail.com",
+      "result": "Proliferative",
+      "id": 10
+    },
+    {
+      "name": "john",
+      "result": "Severe",
+      "email": "john@gmail.com",
+      "id": 11
+    },
+    {
+      "name": "moni",
+      "result": "Proliferative",
+      "email": "moni@gmail.com",
+      "id": 12
+    },
+    {
+      "name": "salma",
+      "result": "Moderate",
+      "email": "salma@gmail.com",
+      "id": 13
+    },
+    {
+      "name": "sameh yasser",
+      "result": "Proliferative",
+      "email": "sameh@gmail.com",
+      "id": 14
+    },
+    {
+      "name": "moni",
+      "result": "Proliferative",
+      "email": "moni@gmail.com",
+      "id": 15
+    }
+  ],
+  "appointments": [
+    {
+      "department": "selectedDepartment",
+      "doctor": "selectedDoctor",
+      "name": "inputName",
+      "email": "inputEmail",
+      "date": "inputDate",
+      "time": "inputTime"
+    }
+  ]
+}
